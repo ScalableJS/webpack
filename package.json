@@ -1,0 +1,22 @@
+{
+  "name": "webpack-lecture",
+  "version": "1.0.0",
+  "description": "Почему webpack\r - Серверная часть\r - Всеобщая система сборки\r - Динамическая подгрузка\r - Препроцессоры\r - Live reload",
+  "main": "___webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScalableJS/webpack-lecture.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ScalableJS/webpack-lecture/issues"
+  },
+  "homepage": "https://github.com/ScalableJS/webpack-lecture#readme",
+  "devDependencies": {
+    "webpack": "^4.17.1"
+  }
+}
