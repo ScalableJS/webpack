@@ -11,12 +11,34 @@ module.exports = function (env, argv) {
     watch: NODE_ENV === 'development',
     mode: NODE_ENV === 'development' ? 'development' : 'production',
     module: {
-      loaders: [
-        {
-          test: /\.js$/,
-          loader: 'babel-loader'
-        }
-      ]
+      rules: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								'es2015',
+							]
+						}
+					}
+				},
+				{
+					test: /\.css$/,
+					use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.scss$/,
+					use: [{
+						loader: "style-loader" // creates style nodes from JS strings
+					}, {
+						loader: "css-loader" // translates CSS into CommonJS
+					}, {
+						loader: "sass-loader" // compiles Sass to CSS
+					}]
+				}
+			],
     }
   }
 }

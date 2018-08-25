@@ -1,5 +1,6 @@
 Документация
  - https://webpack.js.org/concepts/
+ - https://habr.com/post/347812/
 
 Генератор
 - https://generatewebpackconfig.netlify.com/
@@ -63,13 +64,53 @@ browser -> http://127.0.0.1:8080/
     
     webpack --env.NODE_ENV=local
     const NODE_ENV = env.production || 'development';
-    
+
     //new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']);
     set NODE_ENV=production && node_modules\\.bin\\webpack
     https://webpack.js.org/guides/environment-variables/
 
 6) Babel.JS
+    npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
+    
+    
+    npm install style-loader css-loader --save-dev
+    
+    npm install sass-loader node-sass --save-dev
 
+    rules: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader',
+						options: {
+							presets: [
+								'es2015',
+							]
+						}
+					}
+				},
+				{
+					test: /\.css$/,
+					use: ['style-loader', 'css-loader']
+				},
+				{
+					test: /\.scss$/,
+					use: [{
+						loader: "style-loader" // creates style nodes from JS strings
+					}, {
+						loader: "css-loader" // translates CSS into CommonJS
+					}, {
+						loader: "sass-loader" // compiles Sass to CSS
+					}]
+				}
+			],
+    "style-loader", // creates style nodes from JS strings
+    "css-loader", // translates CSS into CommonJS
+    "sass-loader" // compiles Sass to CSS, using Node Sass by default
+    
+    https://github.com/babel/babel-loader
+    https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 
 
 
