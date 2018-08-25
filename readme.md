@@ -25,11 +25,53 @@ https://habrahabr.ru/post/206678/
     node_modules\.bin\webpack
 
 Инсталяция Сервера
-browser -> http://127.0.0.1:8080/inedx.html
-    npm install -g node-static
-    
+browser -> http://127.0.0.1:8080/
+    npm install -g node-static (npm i -D node-static)
+    node_modules\.bin\static
+    https://habr.com/post/222803/
 
 Запускаем в консоли команду webpack
+
+Отключить кэш в браузере
+    https://stackoverflow.com/questions/38555285/node-static-js-file-isnt-refreshing
+
+2) Внешний доступ к модулям
+    home.js -> exports.welcome = welcome;
+    config -> output: {library: 'lib'}
+
+3) Пересборка при изменениях
+    config -> 
+    watch: true,
+    watchOptions: {aggregateTimeout: 300}, // Default
+
+4) Отладка, Source maps
+    mode : 'development'
+
+5) Окружение, NODE_ENV
+    //webpack.js.org/guides/environment-variables/
+    const NODE_ENV = process.env.NODE_ENV || 'development';
+    watch: NODE_ENV === 'development',
+    mode: NODE_ENV === 'development',
+
+
+    SET NODE_ENV=production node_modules\.bin\webpack
+    pckage.json ->
+    "scripts": {
+        "dev": "webpack --mode development",
+        "build": "webpack --mode production"
+    }
+    
+    webpack --env.NODE_ENV=local
+    const NODE_ENV = env.production || 'development';
+    
+    //new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']);
+    set NODE_ENV=production && node_modules\\.bin\\webpack
+    https://webpack.js.org/guides/environment-variables/
+
+6) Babel.JS
+
+
+
 
 Visual Studio plugin
     open in browser (TechER)

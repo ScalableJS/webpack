@@ -1,3 +1,4 @@
+var global =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -93,7 +94,8 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("let welcome = __webpack_require__(/*! ./welcome.js */ \"./src/welcome.js\");\r\nwelcome('home');\r\nconsole.log(123)\n\n//# sourceURL=webpack:///./src/home.js?");
+"use strict";
+eval("\n\nvar _welcome = __webpack_require__(/*! ./welcome.js */ \"./src/welcome.js\");\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('home'); //let welcome = require('./welcome.js');\n\n//# sourceURL=webpack://global/./src/home.js?");
 
 /***/ }),
 
@@ -102,9 +104,10 @@ eval("let welcome = __webpack_require__(/*! ./welcome.js */ \"./src/welcome.js\"
   !*** ./src/welcome.js ***!
   \************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = function(message) {\r\n alert(`Welcome ${message}`);\r\n}\n\n//# sourceURL=webpack:///./src/welcome.js?");
+"use strict";
+eval("\n\nmodule.exports = function (message) {\n    debugger;\n    alert(\"Welcome to \" + message);\n};\n\n//# sourceURL=webpack://global/./src/welcome.js?");
 
 /***/ })
 
