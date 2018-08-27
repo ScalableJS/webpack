@@ -13,8 +13,8 @@
 - Live reload
 
 Создадим файлы
-    home.js
-    wellcom.js
+    src/home.js
+    src/wellcom.js
     index.html
     webpack.config.js
 
@@ -23,11 +23,12 @@ https://habrahabr.ru/post/206678/
     npm init
     npm install --save-dev webpack (npm i -D webpack)
     npm install --save-dev webpack-cli (npm i -D webpack-cli)
+    npm install --save-dev webpack webpack-cli
     node_modules\.bin\webpack
 
 Инсталяция Сервера
 browser -> http://127.0.0.1:8080/
-    npm install -g node-static (npm i -D node-static)
+    npm install --save-dev node-static (npm i -D node-static)
     node_modules\.bin\static
     https://habr.com/post/222803/
 
@@ -70,6 +71,8 @@ browser -> http://127.0.0.1:8080/
     https://webpack.js.org/guides/environment-variables/
 
 6) Babel.JS
+import welcome from './welcome.js';
+import css from './file.scss';
     npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
     
     
@@ -119,5 +122,7 @@ Visual Studio plugin
 
 Путь JavaScript модуля
     https://habrahabr.ru/post/181536/
+
+????Динамическая сборка
     
 
