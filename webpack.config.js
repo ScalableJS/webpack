@@ -2,7 +2,7 @@
 module.exports = function (env, argv) {
   const NODE_ENV = env && env.production || 'development';
   return {
-    entry: { main: './src/home' },
+    entry: { main: './src/home.jsx' },
     output: {
       filename: 'main.js',
       library: 'global'
@@ -13,14 +13,12 @@ module.exports = function (env, argv) {
     module: {
       rules: [
 				{
-					test: /\.js$/,
+					test: /\.js$|\.jsx$/,
 					exclude: /node_modules/,
 					use: {
 						loader: 'babel-loader',
 						options: {
-							presets: [
-								'es2015',
-							]
+							presets: ['es2015', 'react']
 						}
 					}
 				},
