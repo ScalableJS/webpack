@@ -2,9 +2,12 @@
 module.exports = function (env, argv) {
   const NODE_ENV = env && env.production || 'development';
   return {
-    entry: { main: './src/home.jsx' },
+    entry: { 
+			home: './src/home',
+			about: './src/about' 
+		},
     output: {
-      filename: 'main.js',
+      filename: '[name].js',
       library: 'global'
     },
 

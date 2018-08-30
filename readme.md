@@ -155,6 +155,7 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 └── webpack.config.js    - файл настроек Webpack  
 
 **Несколько точек входа**
+    Create file about.js
     entry to Object
     entry: {
         home:'src/home',
@@ -169,7 +170,21 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 Добавим свойство контекст чтобы не писать его в entry каждый раз
 path.resolve(__dirname, 'frontend'),
 //context: __dirname + 'src'
+**Common JS**
+```
+new webpack.optimize.CommonsChunkPlugin(options);
+name: 'commons'
+```
+common.js содержит явные модули в которых мы нуждаемся
 
+**Информация о сборке**
+```
+webpack --display-modules 
+webpack --display-modules -v
+webpack --json --profile > stats.json
+```
+Интерактивно просмотреть  
+граф зависимости
 
 **REACT**  
 [Tutorial: How to set up React, webpack 4, and Babel (2018)](https://www.valentinog.com/blog/react-webpack-babel/)
