@@ -26,7 +26,13 @@
 npm init
 npm install --save-dev webpack (npm i -D webpack)
 npm install --save-dev webpack-cli (npm i -D webpack-cli)
-npm install --save-dev webpack webpack-cli
+```
+Также можно установить сразу несколько плагинов одной командой
+```
+npm i -D webpack webpack-cli
+```
+Запускаем наше приложение 
+```
 node_modules\.bin\webpack
 ```
 Инсталяция static Сервера  
@@ -132,14 +138,49 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 - [Open in Browser](https://marketplace.visualstudio.com/items?itemName=techer.open-in-browser)
 - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
-**Литература:**
-- [Путь JavaScript модуля](https://habrahabr.ru/post/181536/)
+**Структура проекта**  
 
-????Динамическая сборка
-    
+├── dist                 - папка, куда будет собираться сайт  
+├─┬ src                  - папка с исходниками сайта  
+│ ├── favicon            - папка с файлами иконок для сайта  
+│ ├── fonts              - папка со шрифтами  
+│ ├─┬ html               - папка заготовок HTML страниц  
+│ │ ├── includes         - папка с встраиваемыми шаблонами (header, footer)  
+│ │ └── views            - папка с самими HTML страницами  
+│ ├── img                - папка с общими изображениями (логотип, иконки и др.)  
+│ ├── js                 - папка с JavaScript файлами  
+│ ├── scss               - папка с SСSS файлами  
+│ └── uploads            - папка с файлами статей (картинки, архивы и др.)  
+├── package.json         - файл настроек Node.js  
+└── webpack.config.js    - файл настроек Webpack  
+
+**Несколько точек входа**
+    entry to Object
+    entry: {
+        home:'src/home',
+        about:'src/about'
+    }
+    output: {
+        path: __dirname + 'dist' ???
+        filename: '[name].js'
+        library: '[name]'
+    }
+
+Добавим свойство контекст чтобы не писать его в entry каждый раз
+path.resolve(__dirname, 'frontend'),
+//context: __dirname + 'src'
+
 
 **REACT**  
 [Tutorial: How to set up React, webpack 4, and Babel (2018)](https://www.valentinog.com/blog/react-webpack-babel/)
 npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
 npm i babel-core babel-loader babel-preset-env babel-preset-react --save-dev
 npm i react react-dom --save-dev
+
+
+
+
+**Литература:**
+- [Путь JavaScript модуля](https://habrahabr.ru/post/181536/)
+- [Скринкаст WEBPACK](http://learn.javascript.ru/screencast/webpack)
+- [Простой статический сайт на Webpack 4](https://habr.com/post/350886/)
