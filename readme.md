@@ -177,6 +177,13 @@ name: 'commons'
 ```
 common.js содержит явные модули в которых мы нуждаемся
 
+**Dynamic Imports**
+path: path.resolve(__dirname, "src/main/webapp/dist/"),
+publicPath: "/dist/" - webpack обязан его знать так как скрипты будет подгружать динамически
+
+"plugins": ["syntax-dynamic-import"]
+npm install --save-dev @babel/plugin-syntax-dynamic-import
+
 **Информация о сборке**
 ```
 webpack --display-modules 

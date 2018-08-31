@@ -1,20 +1,21 @@
 // Webpack v4
 module.exports = function (env, argv) {
-  const NODE_ENV = env && env.production || 'development';
-  return {
-    entry: { 
+	const NODE_ENV = env && env.production || 'development';
+	return {
+		entry: {
 			home: './src/home',
-			about: './src/about' 
+			about: './src/about'
 		},
-    output: {
-      filename: '[name].js',
-      library: 'global'
-    },
+		output: {
+			publicPath: "/dist/",
+			filename: '[name].js',
+			library: 'global',
+		},
 
-    watch: NODE_ENV === 'development',
-    mode: NODE_ENV === 'development' ? 'development' : 'production',
-    module: {
-      rules: [
+		watch: NODE_ENV === 'development',
+		mode: NODE_ENV === 'development' ? 'development' : 'production',
+		module: {
+			rules: [
 				{
 					test: /\.js$|\.jsx$/,
 					exclude: /node_modules/,
@@ -39,7 +40,7 @@ module.exports = function (env, argv) {
 						loader: "sass-loader" // compiles Sass to CSS
 					}]
 				}
-			],
-    }
-  }
+			]
+		}
+	}
 }
