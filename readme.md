@@ -57,36 +57,45 @@ node_modules\.bin\static
 ![Отключить кэш в браузере](https://i.stack.imgur.com/mIy1W.jpg "Отключить кэш в браузере")
     
 
-## Внешний доступ к модулям ##
-**Entry** передает в Webpack данные о том, где находится корневой модуль или точка входа. 
-
+2. Minimum config  
+- **Entry** передает в Webpack данные о том, где находится корневой модуль или точка входа. 
 ```
 config -> 
     entry : String, Array, Object
 ```
-**output**  –  path и publicPath  
+- **output**  –  path и publicPath  
 Свойство path сообщает Webpack, где хранить результат, тогда как свойство publicPath для production-сборок. Как пример URL для CDN.
 ```
 output: {
     filename: 'index.js',
+}
+```
+- **Global variable / Внешний доступ к модулям**
+
+```
+home.js-> 
+export {welcome};
+
+output: {
     library: 'lib'
 }
 ```
 
-3) Пересборка при изменениях  
+
+3. Пересборка при изменениях  
 ```
 config -> 
 watch: true,
 watchOptions: {aggregateTimeout: 300}, // Default
 ```
 
-4) Отладка, Source maps  
+4. Отладка, Source maps  
 ```
 mode : 'development'
 devtool: 'source-map',
 ```
 
-5) Окружение, NODE_ENV 
+5. Окружение, NODE_ENV 
 [Environment variables](//webpack.js.org/guides/environment-variables/)
 ```
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -108,7 +117,7 @@ const NODE_ENV = env.production || 'development';
 ```
     
 
-6) Babel.JS 
+6. Babel.JS 
 ```
 import welcome from './welcome.js';
 import css from './file.scss';
