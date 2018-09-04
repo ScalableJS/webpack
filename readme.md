@@ -197,7 +197,7 @@ webpack --json --profile > stats.json
 [Tutorial: How to set up React, webpack 4, and Babel (2018)](https://www.valentinog.com/blog/react-webpack-babel/)
 npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
 npm i babel-core babel-loader babel-preset-env babel-preset-react --save-dev
-npm i react react-dom --save-dev
+npm i react react-dom --save
 
 
 
