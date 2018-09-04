@@ -1,11 +1,19 @@
+## Сборщик модулей webpack ##
+
 **Документация**
  - https://webpack.js.org/concepts/
  - https://habr.com/post/347812/
+ - https://habr.com/company/plarium/blog/309230/
 
 **Генератор**
 - https://generatewebpackconfig.netlify.com/
 
-**Почему webpack**
+## Философия Webpack ##
+Основные принципы философии Webpack:  
+- Что угодно может быть модулем
+- Загружайте только то, что вам нужно и когда вам нужно
+
+## Почему webpack ##
 - Серверная часть
 - Всеобщая система сборки
 - Динамическая подгрузка
@@ -14,7 +22,7 @@
 
 **Создадим файлы**
     src/home.js
-    src/wellcom.js
+    src/welcome.js
     index.html
     webpack.config.js
 
@@ -24,8 +32,9 @@
 [Несколько полезностей по работе с NPM](https://habr.com/post/206678/)
 ```
 npm init
-npm install --save-dev webpack (npm i -D webpack)
-npm install --save-dev webpack-cli (npm i -D webpack-cli)
+
+npm install webpack --save-dev  
+npm install webpack-cli --save-dev
 ```
 Также можно установить сразу несколько плагинов одной командой
 ```
@@ -48,10 +57,20 @@ node_modules\.bin\static
 ![Отключить кэш в браузере](https://i.stack.imgur.com/mIy1W.jpg "Отключить кэш в браузере")
     
 
-2) Внешний доступ к модулям  
+## Внешний доступ к модулям ##
+**Entry** передает в Webpack данные о том, где находится корневой модуль или точка входа. 
+
 ```
-home.js -> exports.welcome = welcome;
-config -> output: {library: 'lib'}
+config -> 
+    entry : String, Array, Object
+```
+**output**  –  path и publicPath  
+Свойство path сообщает Webpack, где хранить результат, тогда как свойство publicPath для production-сборок. Как пример URL для CDN.
+```
+output: {
+    filename: 'index.js',
+    library: 'lib'
+}
 ```
 
 3) Пересборка при изменениях  
@@ -64,6 +83,7 @@ watchOptions: {aggregateTimeout: 300}, // Default
 4) Отладка, Source maps  
 ```
 mode : 'development'
+devtool: 'source-map',
 ```
 
 5) Окружение, NODE_ENV 

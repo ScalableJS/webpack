@@ -1,4 +1,4 @@
-var global =
+var lib =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -78,24 +78,24 @@ var global =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/";
+/******/ 	__webpack_require__.p = "";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/about.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/home.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/about.js":
-/*!**********************!*\
-  !*** ./src/about.js ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./src/home.js":
+/*!*********************!*\
+  !*** ./src/home.js ***!
+  \*********************/
+/*! exports provided: welcome */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _welcome = __webpack_require__(/*! ./welcome.js */ \"./src/welcome.js\");\n\nvar _welcome2 = _interopRequireDefault(_welcome);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n(0, _welcome2.default)('about');\n\n//# sourceURL=webpack://global/./src/about.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _welcome_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./welcome.js */ \"./src/welcome.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"welcome\", function() { return _welcome_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\r\n\r\nObject(_welcome_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('home');\r\n\r\n\r\n\n\n//# sourceURL=webpack://lib/./src/home.js?");
 
 /***/ }),
 
@@ -103,11 +103,11 @@ eval("\n\nvar _welcome = __webpack_require__(/*! ./welcome.js */ \"./src/welcome
 /*!************************!*\
   !*** ./src/welcome.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports = function (message) {\n    alert(\"Welcome to \" + message);\n};\n\n//# sourceURL=webpack://global/./src/welcome.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (message) {\r\n    alert(`Welcome ${message}`);\r\n});\n\n//# sourceURL=webpack://lib/./src/welcome.js?");
 
 /***/ })
 
