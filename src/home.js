@@ -1,6 +1,7 @@
 import welcome from './welcome.js';
-import css from './more/file.css';
 debugger
-
+if(process.env.IS_DEV_MODE) {
+    console.log('dev mode');
+}
 welcome('home');
 
