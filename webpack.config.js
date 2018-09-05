@@ -7,7 +7,7 @@ module.exports = {
 	},
 	mode: 'development',
 	plugins: [
-		new webpack.EnvironmentPlugin({
+		new webpack.DefinePlugin({
 			'IS_DEV_MODE': JSON.stringify(true)
 		})
 	]
