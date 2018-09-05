@@ -1,7 +1,7 @@
 ## Сборщик модулей webpack ##
 
 **Документация**
- - https://webpack.js.org/concepts/
+ - https://webpack.js.org/
  - https://habr.com/post/347812/
  - https://habr.com/company/plarium/blog/309230/
 
@@ -35,10 +35,11 @@ npm init
 
 npm install webpack --save-dev  
 npm install webpack-cli --save-dev
+npm install webpack-dev-server
 ```
-Также можно установить сразу несколько плагинов одной командой
+Можно установить сразу несколько плагинов одной командой
 ```
-npm i -D webpack webpack-cli
+npm i -D webpack webpack-cli webpack-dev-server
 ```
 Запускаем наше приложение 
 ```
@@ -96,51 +97,69 @@ devtool: 'source-map',
 ```
 
 5. Окружение, NODE_ENV 
-[Environment variables](//webpack.js.org/guides/environment-variables/)
+[Environment variables](//webpack.js.org/guides/environment-variables/)  
+
+If you want to change the behavior according to the mode variable inside the webpack.config.js, you have to export a function instead of an object:
 ```
-const NODE_ENV = process.env.NODE_ENV || 'development';
-watch: NODE_ENV === 'development',
-mode: NODE_ENV === 'development',
-```
-```
-SET NODE_ENV=production node_modules\.bin\webpack
-pckage.json ->
-"scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+function (env, argv) {
+    console.log(env)
+	return {}
 }
 ```
+```
+const IS_DEV_MODE = env.NODE_ENV === 'production' ?  'production' : 'development';
+watch: isDevMode,
+mode: isDevMode,
+```
 ```  
-webpack --env.NODE_ENV=local
-const NODE_ENV = env.production || 'development';
-//new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG'])
+webpack --env.NODE_ENV=development
 ```
-    
+6. Plugins   
+```
+const webpack = require('webpack');
+...
+new webpack.EnvironmentPlugin({
+  'IS_DEV_MODE': JSON.stringify(true)
+});
 
-6. Babel.JS 
 ```
-import welcome from './welcome.js';
-import css from './file.scss';
+
+
+7. Babel.JS 
+
 ```
+npm i --save-dev babel-core babel-loader@7
+npm i --save-dev babel-preset-env babel-preset-es2015 babel-preset-stage-0 babel-preset-react
+
+rules: [
+    {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader',
+            options: {
+                presets:  ['es2015', 'stage-0',  'react']
+            }
+        }
+    }
+]
 ```
-npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
+8. CSS
+Style-loader нужен нам для инджекта стилей в head, 
+а css-loader, для того, чтобы мы могли импортировать css в js.
+import css from './more/file.css';
+
+```
+npm i --save-dev babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 
 npm install style-loader css-loader --save-dev
 npm install sass-loader node-sass --save-dev
 ```
+{
+    test: /\.css$/,
+    use: ['style-loader', 'css-loader']
+}
 ```
 rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            'es2015',
-                        ]
-                    }
-                }
-            },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
@@ -219,8 +238,7 @@ webpack --display-modules
 webpack --display-modules -v
 webpack --json --profile > stats.json
 ```
-Интерактивно просмотреть  
-граф зависимости
+[Интерактивно просмотреть граф зависимости](http://webpack.github.io/analyse/)
 
 **REACT**  
 [Tutorial: How to set up React, webpack 4, and Babel (2018)](https://www.valentinog.com/blog/react-webpack-babel/)
