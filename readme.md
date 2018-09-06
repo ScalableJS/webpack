@@ -117,11 +117,18 @@ webpack --env.NODE_ENV=development
 6. Plugins   
 ```
 const webpack = require('webpack');
+```
+```
+home.js -> if(process.env.IS_DEV_MODE)
 ...
 new webpack.EnvironmentPlugin({
   'IS_DEV_MODE': JSON.stringify(true)
 });
-
+```
+**OR**
+```
+home.js -> if(IS_DEV_MODE)
+new webpack.DefinePlugin
 ```
 
 
