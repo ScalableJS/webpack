@@ -151,41 +151,34 @@ rules: [
     }
 ]
 ```
-8. CSS
-Style-loader нужен нам для инджекта стилей в head, 
-а css-loader, для того, чтобы мы могли импортировать css в js.
+8. CSS / SASS
+**Style-loader** нужен нам для инджекта стилей в head.  
+**CSS-loader**, для того, чтобы мы могли импортировать css в js.  
+```
 import css from './more/file.css';
-
-```
-npm i --save-dev babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 
-npm install style-loader css-loader --save-dev
-npm install sass-loader node-sass --save-dev
-```
+npm i -D style-loader css-loader
 {
     test: /\.css$/,
     use: ['style-loader', 'css-loader']
 }
 ```
-rules: [
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.scss$/,
-                use: [{
-                    loader: "style-loader" // creates style nodes from JS strings
-                }, {
-                    loader: "css-loader" // translates CSS into CommonJS
-                }, {
-                    loader: "sass-loader" // compiles Sass to CSS
-                }]
-            }
-        ]
+**SCSS**
+```
+npm i -D sass-loader node-sass
+{
+    test: /\.scss$/,
+    use: [{
+        // creates style nodes from JS strings
+        loader: "style-loader" 
+    }, {
+        // translates CSS into CommonJS
+        loader: "css-loader" 
+    }, {
+        // compiles Sass to CSS
+        loader: "sass-loader" 
+    }]
+}
 ```   
-https://github.com/babel/babel-loader
-https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
-
 
 
 **Visual Studio plugins**
@@ -194,7 +187,7 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 - [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles)
 
 **Структура проекта**  
-
+```
 ├── dist                 - папка, куда будет собираться сайт  
 ├─┬ src                  - папка с исходниками сайта  
 │ ├── favicon            - папка с файлами иконок для сайта  
@@ -208,9 +201,10 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
 │ └── uploads            - папка с файлами статей (картинки, архивы и др.)  
 ├── package.json         - файл настроек Node.js  
 └── webpack.config.js    - файл настроек Webpack  
-
-**Несколько точек входа**
-    Create file about.js
+```
+**Несколько точек входа**  
+```
+Create file about.js
     entry to Object
     entry: {
         home:'src/home',
@@ -221,10 +215,13 @@ https://webpack.js.org/loaders/babel-loader/#src/components/Sidebar/Sidebar.jsx
         filename: '[name].js'
         library: '[name]'
     }
+```
 
 Добавим свойство контекст чтобы не писать его в entry каждый раз
+```
 path.resolve(__dirname, 'frontend'),
-//context: __dirname + 'src'
+context: __dirname + 'src'
+```
 **Common JS**
 ```
 new webpack.optimize.CommonsChunkPlugin(options);
@@ -232,9 +229,11 @@ name: 'commons'
 ```
 common.js содержит явные модули в которых мы нуждаемся
 
-**Dynamic Imports**
+**Dynamic Imports**  
+```
 path: path.resolve(__dirname, "src/main/webapp/dist/"),
 publicPath: "/dist/" - webpack обязан его знать так как скрипты будет подгружать динамически
+```
 
 "plugins": ["syntax-dynamic-import"]
 npm install --save-dev @babel/plugin-syntax-dynamic-import

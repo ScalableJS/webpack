@@ -1,2 +1,2 @@
-import welcome from './welcome.js';
+import welcome from '../welcome.js';
 welcome('about');
