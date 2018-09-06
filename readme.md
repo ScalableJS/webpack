@@ -1,12 +1,6 @@
 ## Сборщик модулей webpack ##
 
-**Документация**
- - https://webpack.js.org/
- - https://habr.com/post/347812/
- - https://habr.com/company/plarium/blog/309230/
-
-**Генератор**
-- https://generatewebpackconfig.netlify.com/
+## Lesson 01 ##
 
 ## Философия Webpack ##
 Основные принципы философии Webpack:  
@@ -131,7 +125,6 @@ home.js -> if(IS_DEV_MODE)
 new webpack.DefinePlugin
 ```
 
-
 7. Babel.JS 
 
 ```
@@ -179,6 +172,58 @@ npm i -D sass-loader node-sass
     }]
 }
 ```   
+## Lesson 02 ##
+
+**Несколько точек входа**  
+```
+Create file about.js
+    entry to Object
+    entry: {
+        home:'src/home',
+        about:'src/about'
+    }
+    output: {
+        filename: '[name].js'
+        library: '[name]'
+    }
+```
+
+Добавим свойство контекст чтобы не писать его в entry каждый раз
+```
+path.resolve(__dirname, 'frontend'),
+context: __dirname + 'src'
+```
+**Common JS**
+```
+new webpack.optimize.CommonsChunkPlugin(options);
+name: 'commons'
+```
+common.js содержит явные модули в которых мы нуждаемся
+
+**Dynamic Imports**  
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+https://webpack.js.org/guides/code-splitting/#dynamic-imports
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  
+button.js and dynamic.js  
+ *The **legacy**, webpack-specific approach is to use **require.ensure***
+```
+publicPath: '/dist/' - webpack обязан его знать так как скрипты будет подгружать динамически
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+path: path.resolve(__dirname, "src/main/webapp/dist/"),
+```
+```
+"plugins": ["syntax-dynamic-import"]
+npm install --save-dev @babel/plugin-syntax-dynamic-import
+```
+**Информация о сборке**
+```
+webpack --display-modules 
+webpack --display-modules -v
+webpack --json --profile > stats.json
+```
+
+Интерактивно просмотреть граф зависимости  
+[http://webpack.github.io/analyse/](http://webpack.github.io/analyse/)
 
 
 **Visual Studio plugins**
@@ -202,60 +247,13 @@ npm i -D sass-loader node-sass
 ├── package.json         - файл настроек Node.js  
 └── webpack.config.js    - файл настроек Webpack  
 ```
-**Несколько точек входа**  
-```
-Create file about.js
-    entry to Object
-    entry: {
-        home:'src/home',
-        about:'src/about'
-    }
-    output: {
-        path: __dirname + 'dist' ???
-        filename: '[name].js'
-        library: '[name]'
-    }
-```
-
-Добавим свойство контекст чтобы не писать его в entry каждый раз
-```
-path.resolve(__dirname, 'frontend'),
-context: __dirname + 'src'
-```
-**Common JS**
-```
-new webpack.optimize.CommonsChunkPlugin(options);
-name: 'commons'
-```
-common.js содержит явные модули в которых мы нуждаемся
-
-**Dynamic Imports**  
-```
-path: path.resolve(__dirname, "src/main/webapp/dist/"),
-publicPath: "/dist/" - webpack обязан его знать так как скрипты будет подгружать динамически
-```
-
-"plugins": ["syntax-dynamic-import"]
-npm install --save-dev @babel/plugin-syntax-dynamic-import
-
-**Информация о сборке**
-```
-webpack --display-modules 
-webpack --display-modules -v
-webpack --json --profile > stats.json
-```
-[Интерактивно просмотреть граф зависимости](http://webpack.github.io/analyse/)
-
-**REACT**  
-[Tutorial: How to set up React, webpack 4, and Babel (2018)](https://www.valentinog.com/blog/react-webpack-babel/)
-npm i babel-core babel-loader babel-preset-env babel-cli babel-preset-es2015 --save-dev
-npm i babel-core babel-loader babel-preset-env babel-preset-react --save-dev
-npm i react react-dom --save
-
-
-
-
-**Литература:**
+**Литература**
+- https://webpack.js.org/
+- https://habr.com/post/347812/
+- https://habr.com/company/plarium/blog/309230/
 - [Путь JavaScript модуля](https://habrahabr.ru/post/181536/)
 - [Скринкаст WEBPACK](http://learn.javascript.ru/screencast/webpack)
 - [Простой статический сайт на Webpack 4](https://habr.com/post/350886/)
+
+**Генератор WEBPACK **
+- https://generatewebpackconfig.netlify.com/
